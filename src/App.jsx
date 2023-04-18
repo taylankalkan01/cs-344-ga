@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import ReactGA from "react-ga";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-const TRACKING_ID = "G-B6T7CXQ3PZ"; // OUR_TRACKING_ID
-// import useAnalyticsEventTracker from "./useAnalyticsEventTracker";
 
-ReactGA.initialize(TRACKING_ID);
+ReactGA.initialize(process.env.TRACKING_ID);
 
 const useAnalyticsEventTracker = (category = "Blog category") => {
   const eventTracker = (action = "test action", label = "test label") => {
@@ -12,7 +10,6 @@ const useAnalyticsEventTracker = (category = "Blog category") => {
   };
   return eventTracker;
 };
-// export default useAnalyticsEventTracker;
 
 const ContactUs = () => {
   const gaEventTracker = useAnalyticsEventTracker("Contact us");
